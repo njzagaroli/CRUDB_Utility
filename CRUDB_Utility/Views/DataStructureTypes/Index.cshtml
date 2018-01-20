@@ -1,0 +1,89 @@
+﻿
+@model IEnumerable<CRUDB_Utility.Domain.DataStructureType>
+@using System.Text.RegularExpressions;
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>CRU Database Utility</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", "Travel", null, new { @class = "btn btn-primary btn-large" })
+
+</p>
+<table id="DataStructureType" 
+       class="table-primary table-striped table-bordered table-condensed tab" 
+       cellspacing="0" 
+       style="width:100%">
+    <thead >
+        <tr class="bg-primary">
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PD_UPD_Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PD_UPD_By)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @*@{ if (item.Description.Length >= 40)
+                        {
+                            string disp = item.Description.Substring(0, 40) + "...";
+                            @Html.DisplayFor(modelItem => disp)
+                        }
+                        else
+                        {
+                            string disp = item.Description;
+                            @Html.DisplayFor(modelItem => disp)
+                        }
+                    }*@
+                    @{ 
+                        string desc = item.Description;
+                        desc = Regex.Replace(desc, @"(\{.*\})|}| (\\\S +)","");
+                        desc = WebUtility.HtmlDecode(desc);
+                        desc = Regex.Replace(desc, @"<(?:[^>=]|='[^']*'|=""[^""]*""|=[^'""][^\s>]*)*>", "");
+
+
+                    }
+                    @*@Html.DisplayFor(modelItem => item.Description)*@
+                    @Html.DisplayFor(modelItem => desc)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PD_UPD_Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PD_UPD_By)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.DataStructureTypeID }, new { @class = "btn btn-primary btn-sm" }) 
+                    @Html.ActionLink("Details", "Details", new { id = item.DataStructureTypeID }, new { @class = "btn btn-primary btn-sm" }) 
+                    @Html.ActionLink("Delete", "Delete", new { id = item.DataStructureTypeID }, new { @class = "btn btn-primary btn-sm" })
+                </td>
+            </tr>
+                        }
+    </tbody>
+</table>
+<script type="text/javascript" charset="utf8">
+    $('#DataStructureType').DataTable({
+        "columnDefs" : [
+            { "width": "50%", "targets": 1 },
+            { "orderable" : false, "targets" : [1,3,4] }
+        ]
+    });
+
+</script>

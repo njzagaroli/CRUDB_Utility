@@ -1,0 +1,74 @@
+﻿@model CRUDB_Utility.Domain.DataObject
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>DataObject</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhysicalName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhysicalName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PD_INS_Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PD_INS_Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PD_INS_By)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PD_INS_By)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PD_UPD_Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PD_UPD_Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PD_UPD_By)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PD_UPD_By)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.DataObjectID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

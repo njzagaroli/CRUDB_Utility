@@ -1,0 +1,72 @@
+﻿@model CRUDB_Utility.Domain.DataStructureType
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>DataStructureType</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PD_INS_Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PD_INS_Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PD_INS_By)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PD_INS_By)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PD_UPD_Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PD_UPD_Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PD_UPD_By)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PD_UPD_By)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

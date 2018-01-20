@@ -1,0 +1,75 @@
+﻿<!-- JQuery Core JavaScript -->
+<script src="~/Scripts/jquery-3.2.1.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="~/Scripts/bootstrap.min.js"></script>
+
+@model IEnumerable<CRUDB_Utility.Domain.DataObject>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PhysicalName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PD_INS_Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PD_INS_By)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PD_UPD_Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PD_UPD_By)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PhysicalName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PD_INS_Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PD_INS_By)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PD_UPD_Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PD_UPD_By)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.DataObjectID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.DataObjectID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.DataObjectID })
+        </td>
+    </tr>
+}
+
+</table>
